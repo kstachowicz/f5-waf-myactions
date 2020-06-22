@@ -35,7 +35,6 @@ async function main() {
             method: 'post',
             url: policyUrl,
             headers: {
-                'Content-Range': fileSize,
                 'Content-Type': 'application/json'
             },
             data: data,
