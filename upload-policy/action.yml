@@ -13,7 +13,7 @@ inputs:
   password:  
     description: 'f5 big-ip users password'
     required: true
- outputs:
+outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
