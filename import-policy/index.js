@@ -9,7 +9,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const wafAddress = core.getInput('waf-address');
 const username = core.getInput('username');
 const password = core.getInput('password');
-const policyName = core.getInout('policy-name');
+const policyName = core.getInput('policy-name');
 
 
 main();
