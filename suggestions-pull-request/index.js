@@ -23,15 +23,13 @@ async function main() {
         let suggestionsUrl = `https://${wafAddress}/mgmt/tm/asm/tasks/export-suggestions/`;
         let policyUrl = `https://${wafAddress}/mgmt/tm/asm/policies?$filter=name+eq+${policyName}`;
 
+        let suggestionsFound = false;
+
         auth = {
             username: username,
             password: password
         };
        
-        console.log(`wafAddress: ${wafAddress}`);
-        console.log(`policyFilePath: ${policyFilePath}`);
-        console.log(`policyName: ${policyName}`);
-
 
        let policies = await getResponse(policyUrl, 'get', auth, {});
         let policyId = policies.items[0].id;
@@ -49,9 +47,18 @@ async function main() {
 
         let policy_modifications = await getResponse(`${suggestionsUrl}${suggestionId}?ver=15.1.0`, 'get',
         auth, {});
-        console.log("modifications: " + JSON.stringify(policy_modifications.result));
-
-        saveModificationsInPolicyFile(policy_modifications);
+        
+        let modifications_set = policy_modifications.result.suggestions
+        if (Array.isArray(modifications_set) && modifications_set.length) {
+            console.log("modifications: " + JSON.stringify(policy_modifications.result));
+            saveModificationsInPolicyFile(policy_modifications);
+            suggestionsFound = true;
+        } else {
+           
+            console.log("NO SUGGESTIONS FOUND!");
+        }
+        
+        core.setOutput('suggestionsFound', suggestionsFound ? 'true' : 'false');
 
     } catch (error) {
         core.setFailed(error.message);
