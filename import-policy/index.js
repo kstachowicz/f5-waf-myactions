@@ -3,7 +3,6 @@ const github = require('@actions/github');
 const httpClient = require("@actions/http-client");
 const axios = require("axios");
 const fs = require("fs");
-var cors = require('cors');
 
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
