@@ -8,7 +8,7 @@ inputs:
     description: 'f5 big-ip username'
     required: true
   password:  
-    description: 'f5 big-ip user's password'
+    description: 'f5 big-ip users password'
     required: true
   policy-name:  
     description: 'Name of the uploaded policy'
