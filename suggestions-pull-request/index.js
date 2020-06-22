@@ -2,9 +2,10 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const axios = require("axios");
 const fs = require("fs");
+const { Console } = require('console');
 
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 const wafAddress = core.getInput('WAF-address');
 const policyFilePath = core.getInput('policy-filepath');
 const username = core.getInput('username');
@@ -26,15 +27,10 @@ async function main() {
             username: username,
             password: password
         };
-        //const data = fs.readFileSync(policyFilePath).toString();
-
-        var newData = "{ \"cos\": \"tak\", items: [ ] }";
-        //var das123 = JSON.stringify(newData);
-        //das123.cos = "nie"; 
-        //var results22 = fs.writeFileSync(policyFilePath, das123);
-
-     
-
+       
+        console.log(`wafAddress: ${wafAddress}`);
+        console.log(`policyFilePath: ${policyFilePath}`);
+        console.log(`policyName: ${policyName}`);
 
 
        let policies = await getResponse(policyUrl, 'get', auth, {});
@@ -53,8 +49,9 @@ async function main() {
 
         let policy_modifications = await getResponse(`${suggestionsUrl}${suggestionId}?ver=15.1.0`, 'get',
         auth, {});
-        saveModificationsInPolicyFile(policy_modifications);
+        console.log("modifications: " + JSON.stringify(policy_modifications.result));
 
+        saveModificationsInPolicyFile(policy_modifications);
 
     } catch (error) {
         core.setFailed(error.message);
