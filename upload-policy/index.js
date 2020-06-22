@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const core = require("@actions/core");
 const axios = require("axios");
 const fs = require("fs");
 
