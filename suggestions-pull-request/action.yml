@@ -1,0 +1,21 @@
+name: 'F5 WAF new policy suggestions pull request'
+description: 'Suggest WAF policy modification based on F5 heuristic engine '
+inputs:
+  waf-address:  
+    description: 'Address of F5 WAF instance'
+    required: true
+  policy-filepath: 
+    description: 'File path to the specified f5 waf policy'
+    required: true
+  username:  
+    description: 'f5 big-ip username'
+    required: true
+  password:  
+    description: 'f5 big-ip user's password'
+    required: true
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node12'
+  main: 'index.js'
