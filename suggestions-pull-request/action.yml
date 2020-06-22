@@ -16,6 +16,9 @@ inputs:
   password:  
     description: 'f5 big-ip users password'
     required: true
+  policy-name:  
+    description: 'Name of the uploaded policy'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
