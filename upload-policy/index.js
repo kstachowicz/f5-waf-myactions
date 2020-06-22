@@ -13,7 +13,6 @@ let password = core.getInput('password');
 let fileSize = core.getInput('policy-file-size');
 
 
-
 main();
 
 
@@ -29,13 +28,13 @@ async function main() {
         };
 
         const data = fs.readFileSync(policyFilePath).toString();
-        fileSize = data.length;
+        fileSize = data.length-1;
 
         var config = {
             method: 'post',
             url: policyUrl,
             headers: {
-                'Content-Range': fileSize,
+                'Content-Range': `0-${fileSize}/${data.length}`,
                 'Content-Type': 'application/json'
             },
             data: data,
