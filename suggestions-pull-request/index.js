@@ -5,7 +5,7 @@ const fs = require("fs");
 const { Console } = require('console');
 
 
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const wafAddress = core.getInput('WAF-address');
 const policyFilePath = core.getInput('policy-filepath');
 const username = core.getInput('username');
