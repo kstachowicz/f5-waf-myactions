@@ -6,11 +6,11 @@ const fs = require("fs");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const wafAddress = core.getInput('WAF-address');
-const policyFilePath = core.getInput('policy-filepath');
-const username = core.getInput('username');
-const password = core.getInput('password');
-const fileSize = core.getInput('policy-file-size');
+let wafAddress = core.getInput('WAF-address');
+let policyFilePath = core.getInput('policy-filepath');
+let username = core.getInput('username');
+let password = core.getInput('password');
+let fileSize = core.getInput('policy-file-size');
 
 
 
