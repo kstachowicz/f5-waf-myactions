@@ -1,5 +1,8 @@
 name: 'F5 WAF policy upload'
 description: 'Upload WAF policy to F5 BIG-IP instance'
+runs:
+  using: 'node12'
+  main: './index.js'
 inputs:
   waf-address:  
     description: 'Address of F5 WAF instance'

@@ -1,5 +1,8 @@
 name: 'F5 WAF new policy suggestions pull request'
 description: 'Suggest WAF policy modification based on F5 heuristic engine '
+runs:
+  using: 'node12'
+  main: './index.js'
 inputs:
   waf-address:  
     description: 'Address of F5 WAF instance'
