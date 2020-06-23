@@ -76,7 +76,7 @@ function saveModificationsInPolicyFile(policy_modifications) {
         content.modifications.push(value);
     });
     //write file
-    fs.writeFileSync(policyFilePath, JSON.stringify(content));
+    fs.writeFileSync(policyFilePath, JSON.stringify(content, null, 4));
 }
 
 async function getResponse(url, method, auth, data ) {
